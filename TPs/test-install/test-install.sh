@@ -34,12 +34,12 @@ test_ok
 start_test SystemC installation
 test -n "$SYSTEMCROOT" || die "Please, set \$SYSTEMCROOT"
 test -e "$SYSTEMCROOT"/include/systemc || die "$SYSTEMCROOT/include/systemc does not exist. Check \$SYSTEMCROOT."
-ARCH=$(basename $(ls -d /opt/systemc-2.3.2/lib-*) | sed -e "s/lib-//")
-test -e "$SYSTEMCROOT/lib-$ARCH"/libsystemc.la || die "$SYSTEMCROOT/lib-$ARCH/libsystemc.la does not exist. Check your SystemC installation."
+ARCH=$(basename $(ls -d "$SYSTEMCROOT"/lib-*) | sed -e "s/lib-//")
+test -e "$SYSTEMCROOT/lib"-$ARCH/libsystemc.la || die "$SYSTEMCROOT/lib-$ARCH/libsystemc.la does not exist. Check your SystemC installation."
 test_ok
 
 start_test SystemC compilation
-g++ -std=c++11 "$DIR"/test-systemc.cpp \
+g++ "$DIR"/test-systemc.cpp \
     -I "$SYSTEMCROOT"/include/ \
     -L "$SYSTEMCROOT/lib-$ARCH" \
     -Xlinker -Bstatic -lsystemc -Xlinker -Bdynamic -pthread \
