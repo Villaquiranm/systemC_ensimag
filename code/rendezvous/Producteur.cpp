@@ -9,7 +9,7 @@ void Producteur::production()
 {
 	for (int i=0; i<10; i++)
 	{
-		cout << "Envoi de " << i << endl;
+                std::cout << "Envoi de " << i << std::endl;
 	
 		sortie->put(i);
 	}

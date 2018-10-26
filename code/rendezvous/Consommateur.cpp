@@ -11,6 +11,6 @@ void Consommateur::consommation()
 	{
 		int valeur_recue = entree->get();
 
-		cout << "Recu : " << valeur_recue << endl;
+                std::cout << "Recu : " << valeur_recue << std::endl;
 	}
 }
