@@ -1,4 +1,4 @@
-CC=gcc -std=c11
+CC=gcc
 INCLUDE=-I. -I../../
 CFLAGS=$(INCLUDE) -g
 
