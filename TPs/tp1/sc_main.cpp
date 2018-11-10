@@ -1,16 +1,19 @@
 #include "Generator.h"
 #include "bus.h"
+#include "Memory.h"
 
 using namespace std;
 using namespace sc_core;
 
 int sc_main(int argc, char **argv) {
 	Generator generator("Generator1");
+	Memory memory ("Memory");
 	Bus bus("Bus");
-
+	/*Map at addresses [0x10000000, 0x100000FF]*/
+	bus.map(memory.socket, 0x10000000, 0x100000FF);
 	/* connect components to the bus */
 	generator.socket.bind(bus.target);
-	//router.initiator.bind(b.socket);
+	bus.initiator.bind(memory.socket);
 	/* and start simulation */
 	sc_start();
 	return 0;
