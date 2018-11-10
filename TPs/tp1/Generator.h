@@ -10,5 +10,4 @@ struct Generator : sc_core::sc_module {
 	SC_CTOR(Generator);
 };
 
-
 #endif
